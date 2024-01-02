@@ -4,7 +4,14 @@ import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { Test } from './models';
-import { ZapparCamera } from '@zappar/zappar-react-three-fiber';
+import dynamic from 'next/dynamic';
+
+const ZapparCameraSSR = dynamic(
+  () => import('@zappar/zappar-react-three-fiber/lib/Components/ZapparCamera'),
+  {
+    ssr: false,
+  }
+);
 
 export default function Home() {
   const [ar, setAr] = useState(false);
@@ -14,7 +21,7 @@ export default function Home() {
       <div className="h-screen w-screen relative">
         {ar ? (
           <Canvas>
-            <ZapparCamera environmentMap poseMode="anchor-origin" />
+            <ZapparCameraSSR environmentMap poseMode="anchor-origin" />
             <Suspense fallback={null}>
               <Test />
             </Suspense>
