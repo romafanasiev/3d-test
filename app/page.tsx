@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <main>
       <div className="h-screen w-screen">
+        <ARButton />
         <Canvas>
           <XR>
             <Suspense fallback={null}>
@@ -18,7 +19,6 @@ export default function Home() {
             </Suspense>
           </XR>
         </Canvas>
-        <ARButton className="bg-red">AR</ARButton>
       </div>
     </main>
   );
