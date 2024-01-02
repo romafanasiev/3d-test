@@ -3,14 +3,10 @@ import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { Test } from './models';
-// import { ARButton, XR } from '@react-three/xr';
 import { ZapparCamera, ZapparCanvas } from '@zappar/zappar-react-three-fiber';
 
 export default function Home() {
   const [ar, setAr] = useState(false);
-
-  if (!ar) {
-  }
 
   return (
     <main>
