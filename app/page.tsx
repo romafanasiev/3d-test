@@ -1,9 +1,10 @@
 'use client';
+
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { Test } from './models';
-import { ZapparCamera, ZapparCanvas } from '@zappar/zappar-react-three-fiber';
+import { ZapparCamera } from '@zappar/zappar-react-three-fiber';
 
 export default function Home() {
   const [ar, setAr] = useState(false);
@@ -12,12 +13,12 @@ export default function Home() {
     <main>
       <div className="h-screen w-screen relative">
         {ar ? (
-          <ZapparCanvas shadows>
+          <Canvas>
             <ZapparCamera environmentMap poseMode="anchor-origin" />
             <Suspense fallback={null}>
               <Test />
             </Suspense>
-          </ZapparCanvas>
+          </Canvas>
         ) : (
           <Canvas>
             <Suspense fallback={null}>
